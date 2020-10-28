@@ -1,3 +1,4 @@
+
 let bar1, bar2, bar3, bar4, bar5, bar6, bar7;
 let wallpaper;
 
@@ -37,14 +38,13 @@ function preload(){
 function setup() {
   createCanvas(windowWidth,windowHeight);
 
-  image(wallpaper, -150, 0);
-
   analyzer1 = new p5.Amplitude();
   analyzer1.setInput(turbokiller);
 
   angleMode(DEGREES);
   ellipseMode(CENTER);
   textAlign(CENTER);
+  imageMode(CENTER);
 
 }
 
@@ -53,9 +53,14 @@ function setup() {
 
 function draw() {
   push();
+  translate(width/2, height/2);
+  scale(2);
+  image(wallpaper, 0, 0);
+  pop();
+
+  push();
   rectMode(CENTER);
   stroke("Purple");
-
   //Gray rectangle of the window
   strokeWeight(15);
   rect3 = new Rect (windowWidth/2, windowHeight/2, 650, 500, "DimGray");
@@ -211,8 +216,6 @@ class Rect {
 
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
-  
-  image(wallpaper, -150, 0);
 }
 
 
